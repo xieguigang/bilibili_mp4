@@ -11,10 +11,23 @@
           "Microsoft.VisualBasic.Data.BinaryData": "1.0.0",
           "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
           "Microsoft.VisualBasic.Data.BinaryData.Reference": "1.0.0.0",
-          "Microsoft.VisualBasic.Runtime.Reference": "5.33.69.2558"
+          "Microsoft.VisualBasic.Runtime.Reference": "5.33.69.2558",
+          "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.17763.31"
         },
         "runtime": {
           "stream_decoder.dll": {}
+        }
+      },
+      "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.17763.31": {
+        "runtime": {
+          "Microsoft.Windows.SDK.NET.dll": {
+            "assemblyVersion": "10.0.17763.24",
+            "fileVersion": "10.0.17763.31"
+          },
+          "WinRT.Runtime.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.4.44211"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/1.1.1": {},
@@ -725,6 +738,11 @@
   "libraries": {
     "stream_decoder/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.17763.31": {
+      "type": "runtimepack",
       "serviceable": false,
       "sha512": ""
     },
