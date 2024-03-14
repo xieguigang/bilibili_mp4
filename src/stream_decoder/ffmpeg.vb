@@ -28,14 +28,14 @@ Module ffmpeg
     End Sub
 
     Public Function Combine(video As String, audio As String, save_mp4 As String) As Integer
-        Dim code As Integer = 0
         ' ffmpeg -i video.mp4 -i audio.aac -c:v copy -strict experimental save.mp4
         Dim args As String = $"-i {video.CLIPath} -i {audio.CLIPath} -c:v copy -strict experimental {save_mp4.CLIPath}"
-        Dim print As String = PipelineProcess.Call(ffmpeg, args, [in]:="y" & vbCrLf & "y" & vbCrLf & "y", exitCode:=code)
-        Dim logfile As String = save_mp4.ChangeSuffix("log")
+        Dim run As New ProcessStartInfo With {.FileName = ffmpeg, .Arguments = args, .CreateNoWindow = True, .RedirectStandardInput = True}
+        Dim call_ffmpeg As Process = Process.Start(run)
 
-        Call print.SaveTo(logfile)
+        Call call_ffmpeg.StandardInput.WriteLine("y")
+        Call call_ffmpeg.WaitForExit()
 
-        Return code
+        Return call_ffmpeg.ExitCode
     End Function
 End Module
