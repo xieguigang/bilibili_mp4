@@ -2,13 +2,18 @@
 Imports System.IO.Compression
 Imports Microsoft.VisualBasic.ApplicationServices
 Imports Microsoft.VisualBasic.CommandLine
-Imports Microsoft.VisualBasic.CommandLine.InteropService.Pipeline
 
 Module ffmpeg
 
     ReadOnly ffmpeg As String = $"{App.HOME}/ffmpeg.exe"
 
     Sub New()
+        If ffmpeg.FileLength < 100 * 1024 * 1024 Then
+            Call release_ffmpeg()
+        End If
+    End Sub
+
+    Private Sub release_ffmpeg()
         Using ms As New MemoryStream(My.Resources.ffmpeg)
             Dim zip As New ZipArchive(ms, ZipArchiveMode.Read)
             Dim release As Stream = ffmpeg.Open(FileMode.OpenOrCreate, doClear:=True, [readOnly]:=False)
