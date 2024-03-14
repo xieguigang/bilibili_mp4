@@ -2,6 +2,7 @@ Imports System.IO
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.InteropService.SharedORM
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports Microsoft.VisualBasic.Serialization.JSON
 
 <CLI>
 Module Program
@@ -14,10 +15,13 @@ Module Program
     <Usage("/convert /src <folder_path> [/save <output.mp4>]")>
     Public Function Convert(args As CommandLine) As Integer
         Dim src As String = args("/src")
-        Dim save As String = args("/save") Or $"{src}/output.mp4"
-        Dim m4s As String() = src.ListFiles("*.m4s").ToArray
-        Dim video As String = m4s.Where(Function(s) s.BaseName.EndsWith("30120.m4s")).First
-        Dim audio As String = m4s.Where(Function(s) s.BaseName.EndsWith("30280.m4s")).First
+        Dim videoinfo As bilibili_videoinfo = $"{src}/.videoinfo".LoadJsonFile(Of bilibili_videoinfo)
+        Dim save As String = args("/save") Or $"{src}/{videoinfo.DefaultFileName}.mp4"
+        Dim m4s As String() = src.ListFiles("*.m4s") _
+            .OrderByDescending(Function(path) path.FileLength) _
+            .ToArray
+        Dim audio As String = m4s(1)
+        Dim video As String = m4s(0)
         Dim video_mp4 As String = video.ChangeSuffix("mp4")
         Dim audio_aac As String = audio.ChangeSuffix("aac")
 
