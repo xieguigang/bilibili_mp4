@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "stream_decoder": {
+      "commandName": "Project",
+      "commandLineArgs": "/convert /src C:\\Users\\Administrator\\Videos\\bilibili\\1005377285"
+    }
+  }
+}
