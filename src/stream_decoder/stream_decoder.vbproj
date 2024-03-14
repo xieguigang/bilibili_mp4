@@ -5,6 +5,9 @@
     <RootNamespace>stream_decoder</RootNamespace>
     <TargetFramework>net6.0</TargetFramework>
     <Platforms>AnyCPU;x64</Platforms>
+
+    <OutputPath>../../App/</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
