@@ -396,6 +396,17 @@ Microsoft.VisualBasic.Data.BinaryData
  </summary>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Extensions.CheckMagicNumber(Microsoft.VisualBasic.Parallel.RequestStream,System.Collections.Generic.IEnumerable{System.Byte})">
+ <summary>
+ check the magic number inside <see cref="P:Microsoft.VisualBasic.Parallel.RequestStream.ChunkBuffer"/>
+ </summary>
+ <param name="s"></param>
+ <param name="magic"></param>
+ <returns></returns>
+ <remarks>
+ this function will verify the given target stream <paramref name="s"/> is null or empty.
+ </remarks>
+</member>
 <member name="M:Microsoft.VisualBasic.Data.IO.Extensions.VerifyMagicSignature(Microsoft.VisualBasic.Data.IO.IMagicBlock,System.String)">
  <summary>
  使用整形数存储的验证数据
@@ -837,6 +848,9 @@ Microsoft.VisualBasic.Data.BinaryData
  <param name="output">The output stream.</param>
  <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed.</exception>
  <exception cref="T:System.ArgumentNullException">output is null.</exception>
+ <remarks>
+ this data writer object inherits the <see cref="T:System.IO.BinaryWriter"/>.
+ </remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.Data.IO.BinaryDataWriter.#ctor(System.IO.Stream,System.Boolean)">
  <summary>
@@ -848,6 +862,9 @@ Microsoft.VisualBasic.Data.BinaryData
  is disposed; otherwise <c>false</c>.</param>
  <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed.</exception>
  <exception cref="T:System.ArgumentNullException">output is null.</exception>
+ <remarks>
+ this data writer object inherits the <see cref="T:System.IO.BinaryWriter"/>.
+ </remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.Data.IO.BinaryDataWriter.#ctor(System.IO.Stream,System.Text.Encoding)">
  <summary>
@@ -858,6 +875,9 @@ Microsoft.VisualBasic.Data.BinaryData
  <param name="encoding">The character encoding to use.</param>
  <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed.</exception>
  <exception cref="T:System.ArgumentNullException">output or encoding is null.</exception>
+ <remarks>
+ this data writer object inherits the <see cref="T:System.IO.BinaryWriter"/>.as
+ </remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.Data.IO.BinaryDataWriter.#ctor(System.IO.Stream,System.Text.Encoding,System.Boolean)">
  <summary>
